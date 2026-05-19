@@ -336,19 +336,93 @@
 
     /* ─── NOTRE HISTOIRE ─────────────────────────────────── */
     #histoire { background: var(--ivoire); }
-    .story-grid {
+
+    /* ── Chapter tab strip ── */
+    .story-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      justify-content: center;
+      margin-bottom: 2.8rem;
+    }
+    .story-tab {
+      position: relative;
+      padding: .55rem 1.35rem;
+      background: transparent;
+      border: 1px solid rgba(198,129,24,.35);
+      border-radius: 40px;
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--texte-doux);
+      transition: background .25s, color .25s, border-color .25s, box-shadow .25s;
+      white-space: nowrap;
+    }
+    .story-tab::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 24px; height: 2px;
+      background: var(--or);
+      border-radius: 2px;
+      transition: transform .25s;
+    }
+    .story-tab.active {
+      background: var(--bordeaux);
+      color: #fff;
+      border-color: var(--bordeaux);
+      box-shadow: 0 4px 18px rgba(74,1,26,.2);
+    }
+    .story-tab.active::after { transform: translateX(-50%) scaleX(1); }
+    .story-tab:hover:not(.active) {
+      border-color: var(--or);
+      color: var(--bordeaux);
+    }
+
+    /* ── Chapter panels (text + photos together) ── */
+    .story-panels { position: relative; }
+
+    .story-panel {
+      display: none;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    .story-panel.active {
+      display: block;
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    .story-panel.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── Panel inner layout: text left, photos right on desktop ── */
+    .story-panel-inner {
       display: grid;
       grid-template-columns: 1fr;
       gap: 2.5rem;
+      align-items: start;
     }
-    @media (min-width: 640px) {
-      .story-grid { grid-template-columns: 1fr 1fr; }
+    @media (min-width: 700px) {
+      .story-panel-inner {
+        grid-template-columns: 1fr 1.6fr;
+        gap: 3rem;
+      }
     }
-    .story-card {
+
+    /* ── Text block ── */
+    .story-text {
       border-left: 2px solid var(--or-light);
       padding-left: 1.4rem;
     }
-    .story-card-year {
+    .story-text-year {
       font-family: var(--sans);
       font-size: .68rem;
       font-weight: 500;
@@ -357,42 +431,54 @@
       color: var(--or);
       margin-bottom: .4rem;
     }
-    .story-card-title {
+    .story-text h3 {
       font-family: var(--serif);
-      font-size: 1.25rem;
+      font-size: 1.4rem;
       font-weight: 500;
       color: var(--bordeaux);
-      margin-bottom: .5rem;
+      margin-bottom: .7rem;
     }
-    .story-card p {
+    .story-text p {
       font-size: .95rem;
       font-weight: 300;
       color: var(--texte-doux);
-      line-height: 1.75;
+      line-height: 1.85;
     }
-    .story-photo-row {
-      display: flex;
-      gap: 1rem;
-      margin-top: 3rem;
-      justify-content: center;
-      flex-wrap: wrap;
+
+    /* ── Photo triptych ── */
+    .story-photos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+    }
+    .story-photo-wrap {
+      position: relative;
+      aspect-ratio: 3/4;
+      border-radius: calc(var(--radius) * 1.5);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    /* stagger heights for desktop elegance */
+    @media (min-width: 700px) {
+      .story-photo-wrap:nth-child(2) { margin-top: 1.4rem; }
     }
     .story-photo {
       width: 100%;
-      max-width: 220px;
-      aspect-ratio: 3/4;
+      height: 100%;
       object-fit: cover;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      filter: sepia(.12) contrast(1.04);
+      display: block;
+      filter: sepia(.1) contrast(1.04);
+      transition: transform .5s ease, filter .5s ease;
+    }
+    .story-photo-wrap:hover .story-photo {
+      transform: scale(1.04);
+      filter: sepia(0) contrast(1.06);
     }
     .story-photo-placeholder {
       width: 100%;
-      max-width: 220px;
-      aspect-ratio: 3/4;
+      height: 100%;
       background: var(--ivoire2);
       border: 1px dashed var(--or-light);
-      border-radius: var(--radius);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -400,11 +486,11 @@
       gap: .5rem;
       color: var(--or);
       font-family: var(--sans);
-      font-size: .7rem;
+      font-size: .62rem;
       letter-spacing: .1em;
       text-transform: uppercase;
       text-align: center;
-      padding: 1rem;
+      padding: .8rem;
     }
 
     /* ─── PROGRAMME ──────────────────────────────────────── */
@@ -916,7 +1002,7 @@
        NOTRE HISTOIRE
   ════════════════════════════════════════════ -->
   <section id="histoire">
-    <div class="section-inner">
+    <div class="section-inner wide">
       <span class="section-tag reveal">Notre histoire</span>
       <h2 class="section-title reveal">Un amour à la fois</h2>
       <div class="gold-rule reveal"><div class="gold-diamond"></div></div>
@@ -925,54 +1011,126 @@
         celle que nous avons écrite ensemble et que nous continuerons d'écrire pour toujours.
       </p>
 
-      <div class="story-grid">
-        <div class="story-card reveal">
-          <p class="story-card-year">Le début</p>
-          <h3 class="story-card-title">Notre rencontre</h3>
-          <p>
-            <!-- ✏️ PERSONNALISEZ CE TEXTE -->
-            Tout a commencé lors d'une soirée mémorable… Un sourire échangé, une conversation 
-            qui s'étire jusqu'à l'aube, et soudain, le monde avait un peu plus de couleurs. 
-            Nous ne savions pas encore que cette nuit changerait nos vies pour toujours.
-          </p>
-        </div>
-        <div class="story-card reveal">
-          <p class="story-card-year">Au fil des saisons</p>
-          <h3 class="story-card-title">Construire ensemble</h3>
-          <p>
-            <!-- ✏️ PERSONNALISEZ CE TEXTE -->
-            Les années qui ont suivi ont été remplies de voyages, de fous rires, d'aventures 
-            partagées et de petits moments du quotidien qui, mis bout à bout, forment les plus 
-            beaux souvenirs. Chaque jour à tes côtés a été un cadeau.
-          </p>
-        </div>
-        <div class="story-card reveal">
-          <p class="story-card-year">La grande question</p>
-          <h3 class="story-card-title">La demande en mariage</h3>
-          <p>
-            <!-- ✏️ PERSONNALISEZ CE TEXTE -->
-            Avec le cœur qui bat à tout rompre et les mots soigneusement préparés, 
-            un genou à terre… et un « oui » qui résonne encore. Ce moment restera 
-            gravé dans nos mémoires pour l'éternité.
-          </p>
-        </div>
-        <div class="story-card reveal">
-          <p class="story-card-year">Aujourd'hui</p>
-          <h3 class="story-card-title">Notre prochain chapitre</h3>
-          <p>
-            Le 18 septembre 2027, entourés de ceux que nous aimons, nous allons 
-            célébrer l'amour et l'engagement qui nous unissent. Merci d'être là 
-            pour partager cette journée inoubliable avec nous.
-          </p>
-        </div>
+      <!-- ── Tab strip ── -->
+      <div class="story-tabs reveal" role="tablist" aria-label="Chapitres de notre histoire">
+        <button class="story-tab active" role="tab" aria-selected="true"  aria-controls="panel-debut"     data-panel="debut">Le début</button>
+        <button class="story-tab"        role="tab" aria-selected="false" aria-controls="panel-saisons"   data-panel="saisons">Au fil des saisons</button>
+        <button class="story-tab"        role="tab" aria-selected="false" aria-controls="panel-question"  data-panel="question">La grande question</button>
+        <button class="story-tab"        role="tab" aria-selected="false" aria-controls="panel-aujourdhui" data-panel="aujourdhui">Aujourd'hui</button>
       </div>
 
-      <!-- Zone photos -->
-      <div class="story-photo-row reveal">
-        <img src="proposal1.JPG" alt="Notre rencontre" class="story-photo" />
-        <img src="proposal3.JPG" alt="Construire ensemble" class="story-photo" />
-        <img src="proposal2.JPG" alt="La demande en mariage" class="story-photo" />
-      </div>
+      <!-- ── Panels ── -->
+      <div class="story-panels">
+
+        <!-- Le début -->
+        <div class="story-panel active" id="panel-debut" role="tabpanel">
+          <div class="story-panel-inner">
+            <div class="story-text">
+              <p class="story-text-year">Le début</p>
+              <h3>Notre rencontre</h3>
+              <p>
+                <!-- ✏️ PERSONNALISEZ CE TEXTE -->
+                Tout a commencé lors d'une soirée mémorable… Un sourire échangé, une conversation 
+                qui s'étire jusqu'à l'aube, et soudain, le monde avait un peu plus de couleurs. 
+                Nous ne savions pas encore que cette nuit changerait nos vies pour toujours.
+              </p>
+            </div>
+            <div class="story-photos">
+              <div class="story-photo-wrap">
+                <img src="debut1.jpg" alt="Notre rencontre — photo 1" class="story-photo" />
+              </div>
+              <div class="story-photo-wrap">
+                <img src="debut2.jpg" alt="Notre rencontre — photo 2" class="story-photo" />
+              </div>
+              <div class="story-photo-wrap">
+                <img src="debut3.jpg" alt="Notre rencontre — photo 3" class="story-photo" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Au fil des saisons -->
+        <div class="story-panel" id="panel-saisons" role="tabpanel">
+          <div class="story-panel-inner">
+            <div class="story-text">
+              <p class="story-text-year">Au fil des saisons</p>
+              <h3>Construire ensemble</h3>
+              <p>
+                <!-- ✏️ PERSONNALISEZ CE TEXTE -->
+                Les années qui ont suivi ont été remplies de voyages, de fous rires, d'aventures 
+                partagées et de petits moments du quotidien qui, mis bout à bout, forment les plus 
+                beaux souvenirs. Chaque jour à tes côtés a été un cadeau.
+              </p>
+            </div>
+            <div class="story-photos">
+              <div class="story-photo-wrap">
+                <img src="saisons1.jpg" alt="Au fil des saisons — photo 1" class="story-photo" />
+              </div>
+              <div class="story-photo-wrap">
+                <img src="saisons2.jpg" alt="Au fil des saisons — photo 2" class="story-photo" />
+              </div>
+              <div class="story-photo-wrap">
+                <img src="saisons3.jpg" alt="Au fil des saisons — photo 3" class="story-photo" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- La grande question -->
+        <div class="story-panel" id="panel-question" role="tabpanel">
+          <div class="story-panel-inner">
+            <div class="story-text">
+              <p class="story-text-year">La grande question</p>
+              <h3>La demande en mariage</h3>
+              <p>
+                <!-- ✏️ PERSONNALISEZ CE TEXTE -->
+                Avec le cœur qui bat à tout rompre et les mots soigneusement préparés, 
+                un genou à terre… et un « oui » qui résonne encore. Ce moment restera 
+                gravé dans nos mémoires pour l'éternité.
+              </p>
+            </div>
+            <div class="story-photos">
+              <!-- ✏️ Vos vraies photos de fiançailles — ex: proposal1.JPG, proposal2.JPG, proposal3.JPG -->
+              <div class="story-photo-wrap">
+                <img src="proposal1.JPG" alt="La demande en mariage — photo 1" class="story-photo" />
+              </div>
+              <div class="story-photo-wrap">
+                <img src="proposal3.JPG" alt="La demande en mariage — photo 2" class="story-photo" />
+              </div>
+              <div class="story-photo-wrap">
+                <img src="proposal2.JPG" alt="La demande en mariage — photo 3" class="story-photo" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aujourd'hui -->
+        <div class="story-panel" id="panel-aujourdhui" role="tabpanel">
+          <div class="story-panel-inner">
+            <div class="story-text">
+              <p class="story-text-year">Aujourd'hui</p>
+              <h3>Notre prochain chapitre</h3>
+              <p>
+                Le 18 septembre 2027, entourés de ceux que nous aimons, nous allons 
+                célébrer l'amour et l'engagement qui nous unissent. Merci d'être là 
+                pour partager cette journée inoubliable avec nous.
+              </p>
+            </div>
+            <div class="story-photos">
+              <div class="story-photo-wrap">
+                <img src="aujourdhui1.jpg" alt="Aujourd'hui — photo 1" class="story-photo" />
+              </div>
+              <div class="story-photo-wrap">
+                <img src="aujourdhui2.jpg" alt="Aujourd'hui — photo 2" class="story-photo" />
+              </div>
+              <div class="story-photo-wrap">
+                <img src="aujourdhui3.jpg" alt="Aujourd'hui — photo 3" class="story-photo" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /story-panels -->
     </div>
   </section>
 
@@ -1331,7 +1489,7 @@
 
       <!-- ✏️ REMPLACEZ CE LIEN PAR VOTRE VRAI FORMULAIRE GOOGLE FORMS -->
       <a
-        href="https://forms.google.com"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSe4yM8MH6eyF2ActQwK1qCMHL-fOz7JbeOR-6oVpJ8-FH8-JA/viewform"
         target="_blank"
         rel="noopener"
         class="rsvp-cta"
@@ -1432,6 +1590,69 @@
       document.getElementById('map-ceremonie').style.display = which === 'ceremonie' ? 'block' : 'none';
       document.getElementById('map-reception').style.display = which === 'reception'  ? 'block' : 'none';
     }
+
+    /* ─── STORY TABS ────────────────────────────────────── */
+    const storyTabs   = document.querySelectorAll('.story-tab');
+    const storyPanels = document.querySelectorAll('.story-panel');
+
+    function activateTab(tab) {
+      const target = tab.dataset.panel;
+
+      // Update tabs
+      storyTabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+
+      // Fade out current panel, then swap
+      const current = document.querySelector('.story-panel.visible');
+      if (current) {
+        current.classList.remove('visible');
+        setTimeout(() => {
+          current.classList.remove('active');
+          showPanel(target);
+        }, 300);
+      } else {
+        // First paint — no current visible panel
+        const alreadyActive = document.querySelector('.story-panel.active');
+        if (alreadyActive) alreadyActive.classList.remove('active');
+        showPanel(target);
+      }
+    }
+
+    function showPanel(panelId) {
+      const panel = document.getElementById('panel-' + panelId);
+      if (!panel) return;
+      panel.classList.add('active');
+      // rAF trick: let display:block settle before triggering transition
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          panel.classList.add('visible');
+        });
+      });
+    }
+
+    storyTabs.forEach(tab => {
+      tab.addEventListener('click', () => activateTab(tab));
+    });
+
+    // Trigger entrance animation on first panel when it enters viewport
+    const firstPanelObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const activePanel = document.querySelector('.story-panel.active');
+          if (activePanel && !activePanel.classList.contains('visible')) {
+            requestAnimationFrame(() => requestAnimationFrame(() => activePanel.classList.add('visible')));
+          }
+          firstPanelObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.15 });
+
+    const storySection = document.getElementById('histoire');
+    if (storySection) firstPanelObserver.observe(storySection);
 
     /* ─── NAV ACTIVE SECTION ────────────────────────────── */
     const navLinks = document.querySelectorAll('.nav-links a');
