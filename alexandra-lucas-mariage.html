@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Alexandra &amp; Lucas — 18 septembre 2027</title>
+  <meta name="description" content="Site officiel du mariage d'Alexandra et Lucas — 18 septembre 2027, La Prairie et Saint-Léonard, Québec." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --bordeaux:  #4A011A;
+      --bordeaux2: #6b0028;
+      --ivoire:    #F7F1E3;
+      --ivoire2:   #eee8d5;
+      --or:        #C68118;
+      --or-light:  #D1B666;
+      --vert:      #003D20;
+      --vert2:     #005a30;
+      --texte:     #2a1a0e;
+      --texte-doux:#5a4a3a;
+
+      --serif:   'Cormorant Garamond', Georgia, serif;
+      --script:  'Great Vibes', cursive;
+      --sans:    'Jost', sans-serif;
+
+      --radius:  4px;
+      --shadow:  0 4px 32px rgba(74,1,26,.10);
+    }
+
+    /* ─── RESET & BASE ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--ivoire);
+      color: var(--texte);
+      font-family: var(--serif);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── ORNEMENTS SVG INLINE ───────────────────────────── */
+    .ornament {
+      display: block;
+      margin: 0 auto;
+      opacity: .7;
+    }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(247,241,227,.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(198,129,24,.25);
+      padding: 0 1.5rem;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--script);
+      font-size: 1.6rem;
+      color: var(--bordeaux);
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.6rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--vert);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--or); }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--bordeaux);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 58px; left: 0; right: 0;
+      background: var(--ivoire);
+      z-index: 99;
+      padding: 1.5rem 2rem 2rem;
+      border-bottom: 1px solid rgba(198,129,24,.2);
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--sans);
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--vert);
+    }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    #accueil {
+      min-height: 100svh;
+      background:
+        linear-gradient(180deg, rgba(74,1,26,.55) 0%, rgba(0,61,32,.35) 100%),
+        url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80&fit=crop') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1.5rem 3rem;
+      position: relative;
+    }
+    .hero-tag {
+      font-family: var(--sans);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--or-light);
+      margin-bottom: 1.5rem;
+    }
+    .hero-names {
+      font-family: var(--script);
+      font-size: clamp(3.8rem, 12vw, 7.5rem);
+      color: #fff;
+      line-height: 1.15;
+      text-shadow: 0 2px 24px rgba(74,1,26,.5);
+    }
+    .hero-ampersand {
+      font-family: var(--script);
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      color: var(--or-light);
+      display: block;
+      line-height: 1;
+    }
+    .hero-date {
+      margin-top: 1.8rem;
+      font-family: var(--serif);
+      font-size: clamp(1rem, 3.5vw, 1.4rem);
+      font-weight: 300;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.88);
+    }
+    .hero-lieu {
+      font-family: var(--sans);
+      font-size: .85rem;
+      letter-spacing: .12em;
+      color: rgba(255,255,255,.7);
+      margin-top: .5rem;
+    }
+    .hero-cta {
+      margin-top: 2.8rem;
+      display: inline-block;
+      padding: .95rem 2.8rem;
+      background: var(--or);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      border: 2px solid var(--or);
+      border-radius: var(--radius);
+      transition: background .25s, color .25s, transform .2s;
+      box-shadow: 0 4px 20px rgba(198,129,24,.35);
+    }
+    .hero-cta:hover {
+      background: transparent;
+      color: var(--or-light);
+      transform: translateY(-2px);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+    }
+    .hero-scroll span {
+      font-family: var(--sans);
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+    }
+    .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(180deg, rgba(255,255,255,.55), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: .55; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.2); }
+    }
+
+    /* ─── SECTIONS COMMUNES ──────────────────────────────── */
+    section { padding: 5rem 1.5rem; }
+    .section-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .section-inner.wide { max-width: 1000px; }
+
+    .section-tag {
+      font-family: var(--sans);
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--or);
+      display: block;
+      text-align: center;
+      margin-bottom: .8rem;
+    }
+    .section-title {
+      font-family: var(--script);
+      font-size: clamp(2.2rem, 7vw, 3.2rem);
+      color: var(--bordeaux);
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: .5rem;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--texte-doux);
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+    .gold-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem auto 2rem;
+    }
+    .gold-rule::before,
+    .gold-rule::after {
+      content: '';
+      flex: 1;
+      max-width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--or-light));
+    }
+    .gold-rule::after { background: linear-gradient(90deg, var(--or-light), transparent); }
+    .gold-diamond {
+      width: 8px; height: 8px;
+      background: var(--or);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ─── COMPTEUR ───────────────────────────────────────── */
+    #compteur {
+      background: var(--bordeaux);
+      padding: 3.5rem 1.5rem;
+    }
+    .countdown-grid {
+      display: flex;
+      gap: 1px;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: clamp(.8rem, 3vw, 2.5rem);
+    }
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 70px;
+    }
+    .countdown-num {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 300;
+      color: var(--or-light);
+      line-height: 1;
+      min-width: 2ch;
+      text-align: center;
+    }
+    .countdown-label {
+      font-family: var(--sans);
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+      margin-top: .4rem;
+    }
+    .countdown-sep {
+      font-size: 2rem;
+      color: var(--or);
+      opacity: .5;
+      align-self: center;
+      margin-bottom: .5rem;
+    }
+
+    /* ─── NOTRE HISTOIRE ─────────────────────────────────── */
+    #histoire { background: var(--ivoire); }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    @media (min-width: 640px) {
+      .story-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .story-card {
+      border-left: 2px solid var(--or-light);
+      padding-left: 1.4rem;
+    }
+    .story-card-year {
+      font-family: var(--sans);
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: .4rem;
+    }
+    .story-card-title {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--bordeaux);
+      margin-bottom: .5rem;
+    }
+    .story-card p {
+      font-size: .95rem;
+      font-weight: 300;
+      color: var(--texte-doux);
+      line-height: 1.75;
+    }
+    .story-photo-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 3rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .story-photo {
+      width: 100%;
+      max-width: 220px;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      filter: sepia(.12) contrast(1.04);
+    }
+    .story-photo-placeholder {
+      width: 100%;
+      max-width: 220px;
+      aspect-ratio: 3/4;
+      background: var(--ivoire2);
+      border: 1px dashed var(--or-light);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      color: var(--or);
+      font-family: var(--sans);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* ─── PROGRAMME ──────────────────────────────────────── */
+    #programme { background: var(--ivoire2); }
+    .programme-bloc {
+      margin-bottom: 3rem;
+    }
+    .programme-bloc-title {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--vert);
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      margin-bottom: 1.5rem;
+    }
+    .programme-bloc-title svg { flex-shrink: 0; }
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: .5rem;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--or-light), transparent);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.6rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.6rem;
+      top: .45rem;
+      width: 8px; height: 8px;
+      background: var(--or);
+      border-radius: 50%;
+      transform: translateX(-50%);
+    }
+    .timeline-time {
+      font-family: var(--sans);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      color: var(--or);
+      text-transform: uppercase;
+      margin-bottom: .2rem;
+    }
+    .timeline-event {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--bordeaux);
+    }
+    .timeline-desc {
+      font-size: .9rem;
+      font-weight: 300;
+      color: var(--texte-doux);
+      margin-top: .2rem;
+    }
+    .programme-note {
+      margin-top: 1.5rem;
+      padding: 1rem 1.3rem;
+      background: rgba(198,129,24,.08);
+      border-left: 3px solid var(--or-light);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: .88rem;
+      color: var(--texte-doux);
+      font-family: var(--serif);
+      font-style: italic;
+    }
+
+    /* ─── INFOS PRATIQUES ────────────────────────────────── */
+    #infos { background: var(--ivoire); }
+    .infos-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 600px) {
+      .infos-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .info-card {
+      background: var(--ivoire2);
+      border: 1px solid rgba(198,129,24,.2);
+      border-radius: calc(var(--radius) * 2);
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 2px 16px rgba(74,1,26,.05);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 28px rgba(74,1,26,.1);
+    }
+    .info-card-icon {
+      width: 42px; height: 42px;
+      background: var(--bordeaux);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .info-card h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--bordeaux);
+      margin-bottom: .6rem;
+    }
+    .info-card p, .info-card ul, .info-card li {
+      font-size: .9rem;
+      font-weight: 300;
+      color: var(--texte-doux);
+      line-height: 1.75;
+    }
+    .info-card ul { list-style: none; }
+    .info-card li::before {
+      content: '◆';
+      color: var(--or);
+      font-size: .5rem;
+      margin-right: .6rem;
+      vertical-align: middle;
+    }
+    .info-card a {
+      color: var(--vert);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 400;
+    }
+    .map-embed {
+      margin-top: 3rem;
+      border-radius: calc(var(--radius)*2);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(198,129,24,.2);
+    }
+    .map-embed iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      display: block;
+    }
+    .map-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 0;
+    }
+    .map-tab {
+      flex: 1;
+      padding: .8rem;
+      background: var(--ivoire2);
+      border: 1px solid rgba(198,129,24,.2);
+      font-family: var(--sans);
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--texte-doux);
+      cursor: pointer;
+      transition: background .2s, color .2s;
+      text-align: center;
+    }
+    .map-tab.active {
+      background: var(--bordeaux);
+      color: #fff;
+      border-color: var(--bordeaux);
+    }
+    .map-tab:first-child { border-radius: calc(var(--radius)*2) 0 0 0; }
+    .map-tab:last-child  { border-radius: 0 calc(var(--radius)*2) 0 0; }
+
+    /* ─── HÉBERGEMENT ────────────────────────────────────── */
+    #hebergement { background: var(--ivoire2); }
+    .hotel-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+    @media (min-width: 580px) {
+      .hotel-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .hotel-card {
+      background: var(--ivoire);
+      border: 1px solid rgba(198,129,24,.2);
+      border-radius: calc(var(--radius)*2);
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+    }
+    .hotel-badge {
+      display: inline-block;
+      background: var(--vert);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: .62rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .25rem .7rem;
+      border-radius: 20px;
+      margin-bottom: .8rem;
+    }
+    .hotel-card h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--bordeaux);
+      margin-bottom: .4rem;
+    }
+    .hotel-card p {
+      font-size: .85rem;
+      font-weight: 300;
+      color: var(--texte-doux);
+      line-height: 1.6;
+    }
+    .hotel-card .promo-code {
+      margin-top: .8rem;
+      padding: .4rem .8rem;
+      background: rgba(198,129,24,.1);
+      border: 1px dashed var(--or-light);
+      border-radius: var(--radius);
+      font-family: var(--sans);
+      font-size: .75rem;
+      color: var(--or);
+      font-weight: 500;
+      letter-spacing: .1em;
+    }
+
+    /* ─── DRESS CODE ─────────────────────────────────────── */
+    #dresscode {
+      background: var(--bordeaux);
+      text-align: center;
+    }
+    #dresscode .section-tag { color: var(--or-light); }
+    #dresscode .section-title { color: #fff; }
+    #dresscode .section-sub { color: rgba(255,255,255,.7); }
+    .dresscode-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .dresscode-item {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: calc(var(--radius)*2);
+      padding: 1.5rem 2rem;
+      min-width: 180px;
+      flex: 1;
+      max-width: 220px;
+    }
+    .dresscode-swatch {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      margin: 0 auto .8rem;
+      box-shadow: 0 0 0 3px rgba(255,255,255,.15);
+    }
+    .dresscode-item h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: .3rem;
+    }
+    .dresscode-item p {
+      font-size: .8rem;
+      color: rgba(255,255,255,.6);
+      font-family: var(--sans);
+      font-weight: 300;
+    }
+    .dresscode-note {
+      margin-top: 2rem;
+      font-size: .88rem;
+      color: rgba(255,255,255,.6);
+      font-style: italic;
+      font-family: var(--serif);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ─── CORBEILLE NUPTIALE ─────────────────────────────── */
+    #corbeille { background: var(--ivoire); }
+    .corbeille-box {
+      border: 1px solid rgba(198,129,24,.3);
+      border-radius: calc(var(--radius)*2);
+      padding: 2.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(198,129,24,.04), rgba(74,1,26,.03));
+      box-shadow: var(--shadow);
+    }
+    .corbeille-box p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--texte-doux);
+      line-height: 1.9;
+      max-width: 560px;
+      margin: 0 auto 1.8rem;
+    }
+    .interac-block {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      background: var(--ivoire2);
+      border: 1px dashed var(--or-light);
+      border-radius: calc(var(--radius)*2);
+      padding: 1.2rem 2rem;
+      font-family: var(--sans);
+    }
+    .interac-label {
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--or);
+      font-weight: 500;
+    }
+    .interac-email {
+      font-size: 1rem;
+      color: var(--bordeaux);
+      font-weight: 500;
+    }
+    .interac-msg {
+      font-size: .8rem;
+      color: var(--texte-doux);
+    }
+
+    /* ─── RSVP ───────────────────────────────────────────── */
+    #rsvp { background: var(--vert); text-align: center; }
+    #rsvp .section-tag { color: var(--or-light); }
+    #rsvp .section-title { color: #fff; }
+    #rsvp .section-sub { color: rgba(255,255,255,.75); }
+    .rsvp-deadline {
+      font-family: var(--sans);
+      font-size: .8rem;
+      letter-spacing: .1em;
+      color: rgba(255,255,255,.55);
+      margin-bottom: 2.5rem;
+    }
+    .rsvp-cta {
+      display: inline-block;
+      padding: 1.1rem 3.5rem;
+      background: var(--or);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      border: 2px solid var(--or);
+      border-radius: var(--radius);
+      transition: background .25s, color .25s, transform .2s;
+      box-shadow: 0 4px 24px rgba(0,0,0,.25);
+    }
+    .rsvp-cta:hover {
+      background: transparent;
+      color: var(--or-light);
+      transform: translateY(-2px);
+    }
+    .rsvp-note {
+      margin-top: 1.8rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.5);
+      font-family: var(--serif);
+      font-style: italic;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: var(--bordeaux);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    .footer-names {
+      font-family: var(--script);
+      font-size: 2.2rem;
+      color: rgba(255,255,255,.9);
+      margin-bottom: .5rem;
+    }
+    .footer-date {
+      font-family: var(--sans);
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--or-light);
+      margin-bottom: 1.2rem;
+    }
+    .footer-copy {
+      font-size: .75rem;
+      color: rgba(255,255,255,.3);
+      font-family: var(--sans);
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── UTILS ──────────────────────────────────────────── */
+    .text-center { text-align: center; }
+    .mt-1 { margin-top: 1rem; }
+    .mt-2 { margin-top: 2rem; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 640px) {
+      section { padding: 3.5rem 1.2rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .corbeille-box { padding: 1.8rem 1.2rem; }
+    }
+
+    @media (min-width: 641px) {
+      .hamburger { display: none; }
+      .mobile-menu { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════════════ -->
+  <nav aria-label="Navigation principale">
+    <span class="nav-logo">A &amp; L</span>
+    <ul class="nav-links">
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#histoire">Notre histoire</a></li>
+      <li><a href="#programme">Programme</a></li>
+      <li><a href="#infos">Infos pratiques</a></li>
+      <li><a href="#hebergement">Hébergement</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Menu mobile -->
+  <div class="mobile-menu" id="mobileMenu" role="navigation">
+    <a href="#accueil"     onclick="closeMenu()">Accueil</a>
+    <a href="#histoire"    onclick="closeMenu()">Notre histoire</a>
+    <a href="#programme"   onclick="closeMenu()">Programme</a>
+    <a href="#infos"       onclick="closeMenu()">Infos pratiques</a>
+    <a href="#hebergement" onclick="closeMenu()">Hébergement</a>
+    <a href="#dresscode"   onclick="closeMenu()">Dress code</a>
+    <a href="#corbeille"   onclick="closeMenu()">Corbeille</a>
+    <a href="#rsvp"        onclick="closeMenu()">RSVP</a>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════ -->
+  <section id="accueil" aria-label="Page d'accueil">
+    <p class="hero-tag">Ensemble avec leurs familles</p>
+    <div class="hero-names">
+      Alexandra
+      <span class="hero-ampersand">&amp;</span>
+      Lucas
+    </div>
+    <p class="hero-date">Samedi 18 septembre 2027</p>
+    <p class="hero-lieu">La Prairie &amp; Saint-Léonard, Québec</p>
+    <a href="#rsvp" class="hero-cta">Confirmer ma présence</a>
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Défiler</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       COMPTEUR
+  ════════════════════════════════════════════ -->
+  <div id="compteur" role="complementary" aria-label="Compte à rebours">
+    <div class="section-inner">
+      <div class="countdown-grid">
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-jours">--</span>
+          <span class="countdown-label">Jours</span>
+        </div>
+        <span class="countdown-sep" aria-hidden="true">·</span>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-heures">--</span>
+          <span class="countdown-label">Heures</span>
+        </div>
+        <span class="countdown-sep" aria-hidden="true">·</span>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-minutes">--</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <span class="countdown-sep" aria-hidden="true">·</span>
+        <div class="countdown-item">
+          <span class="countdown-num" id="cd-secondes">--</span>
+          <span class="countdown-label">Secondes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       NOTRE HISTOIRE
+  ════════════════════════════════════════════ -->
+  <section id="histoire">
+    <div class="section-inner">
+      <span class="section-tag reveal">Notre histoire</span>
+      <h2 class="section-title reveal">Un amour à la fois</h2>
+      <div class="gold-rule reveal"><div class="gold-diamond"></div></div>
+      <p class="section-sub reveal">
+        De la première rencontre à ce grand jour — voici quelques chapitres de notre histoire, 
+        celle que nous avons écrite ensemble et que nous continuerons d'écrire pour toujours.
+      </p>
+
+      <div class="story-grid">
+        <div class="story-card reveal">
+          <p class="story-card-year">Le début</p>
+          <h3 class="story-card-title">Notre rencontre</h3>
+          <p>
+            <!-- ✏️ PERSONNALISEZ CE TEXTE -->
+            Tout a commencé lors d'une soirée mémorable… Un sourire échangé, une conversation 
+            qui s'étire jusqu'à l'aube, et soudain, le monde avait un peu plus de couleurs. 
+            Nous ne savions pas encore que cette nuit changerait nos vies pour toujours.
+          </p>
+        </div>
+        <div class="story-card reveal">
+          <p class="story-card-year">Au fil des saisons</p>
+          <h3 class="story-card-title">Construire ensemble</h3>
+          <p>
+            <!-- ✏️ PERSONNALISEZ CE TEXTE -->
+            Les années qui ont suivi ont été remplies de voyages, de fous rires, d'aventures 
+            partagées et de petits moments du quotidien qui, mis bout à bout, forment les plus 
+            beaux souvenirs. Chaque jour à tes côtés a été un cadeau.
+          </p>
+        </div>
+        <div class="story-card reveal">
+          <p class="story-card-year">La grande question</p>
+          <h3 class="story-card-title">La demande en mariage</h3>
+          <p>
+            <!-- ✏️ PERSONNALISEZ CE TEXTE -->
+            Avec le cœur qui bat à tout rompre et les mots soigneusement préparés, 
+            un genou à terre… et un « oui » qui résonne encore. Ce moment restera 
+            gravé dans nos mémoires pour l'éternité.
+          </p>
+        </div>
+        <div class="story-card reveal">
+          <p class="story-card-year">Aujourd'hui</p>
+          <h3 class="story-card-title">Notre prochain chapitre</h3>
+          <p>
+            Le 18 septembre 2027, entourés de ceux que nous aimons, nous allons 
+            célébrer l'amour et l'engagement qui nous unissent. Merci d'être là 
+            pour partager cette journée inoubliable avec nous.
+          </p>
+        </div>
+      </div>
+
+      <!-- Zone photos -->
+      <div class="story-photo-row reveal">
+        <div class="story-photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Ajoutez<br/>votre photo</span>
+        </div>
+        <div class="story-photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Ajoutez<br/>votre photo</span>
+        </div>
+        <div class="story-photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Ajoutez<br/>votre photo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       PROGRAMME
+  ════════════════════════════════════════════ -->
+  <section id="programme">
+    <div class="section-inner">
+      <span class="section-tag reveal">Déroulement</span>
+      <h2 class="section-title reveal">Programme de la journée</h2>
+      <div class="gold-rule reveal"><div class="gold-diamond"></div></div>
+      <p class="section-sub reveal">
+        Pour que vous puissiez vous préparer en toute sérénité — voici le fil conducteur 
+        de notre grande journée.
+      </p>
+
+      <!-- CÉRÉMONIE -->
+      <div class="programme-bloc reveal">
+        <h3 class="programme-bloc-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--vert)" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+          Cérémonie religieuse
+        </h3>
+        <p style="font-size:.85rem; color:var(--texte-doux); margin-bottom:1.2rem; font-family:var(--sans);">
+          📍 145 Chem. de Saint-Jean, La Prairie, QC J5R 2J9
+        </p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="timeline-time">14 h 00</p>
+            <p class="timeline-event">Accueil des invités</p>
+            <p class="timeline-desc">Les portes de l'église ouvrent — prenez place et savourez l'atmosphère.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-time">14 h 30</p>
+            <p class="timeline-event">Début de la cérémonie</p>
+            <p class="timeline-desc">La cérémonie religieuse débute. Prévoyez d'être assis quelques minutes avant.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-time">~15 h 30</p>
+            <p class="timeline-event">Sortie des mariés &amp; séance photos</p>
+            <p class="timeline-desc">Célébration sur le parvis, lancer de pétales et premières photos de groupe.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RÉCEPTION -->
+      <div class="programme-bloc reveal">
+        <h3 class="programme-bloc-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--vert)" stroke-width="1.5">
+            <path d="M9 11V6m6 5V6M5 11h14M5 11a2 2 0 00-2 2v6a2 2 0 002 2h14a2 2 0 002-2v-6a2 2 0 00-2-2"/>
+          </svg>
+          Réception
+        </h3>
+        <p style="font-size:.85rem; color:var(--texte-doux); margin-bottom:1.2rem; font-family:var(--sans);">
+          📍 4371 Bd des Grandes-Prairies, Saint-Léonard, QC H1R 3H2
+        </p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="timeline-time">17 h 00</p>
+            <p class="timeline-event">Arrivée des invités &amp; cocktail de bienvenue</p>
+            <p class="timeline-desc">Bulles, canapés et premières retrouvailles dans un cadre festif.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-time">18 h 30</p>
+            <p class="timeline-event">Entrée des mariés &amp; début du souper</p>
+            <p class="timeline-desc">Prenez place pour un repas gastronomique partagé dans la joie.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-time">20 h 30</p>
+            <p class="timeline-event">Discours &amp; témoignages</p>
+            <p class="timeline-desc">Quelques mots du cœur des proches et du couple.</p>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-time">22 h 00</p>
+            <p class="timeline-event">Ouverture de la piste de danse &amp; bar</p>
+            <p class="timeline-desc">La fête commence officiellement — que la nuit soit longue et mémorable !</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="programme-note reveal">
+        ✨ L'horaire est indicatif et peut varier légèrement selon le déroulement de la journée. Vous serez 
+        guidés sur place par notre équipe. Installez-vous et profitez — nous avons tout prévu pour vous !
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       INFOS PRATIQUES
+  ════════════════════════════════════════════ -->
+  <section id="infos">
+    <div class="section-inner wide">
+      <span class="section-tag reveal">La section anti-stress</span>
+      <h2 class="section-title reveal">Infos pratiques</h2>
+      <div class="gold-rule reveal"><div class="gold-diamond"></div></div>
+      <p class="section-sub reveal">
+        Tout ce qu'il vous faut savoir pour arriver serein·e et profiter pleinement de la fête.
+      </p>
+
+      <div class="infos-grid">
+
+        <div class="info-card reveal">
+          <div class="info-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D1B666" stroke-width="1.5">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+          </div>
+          <h3>Lieux &amp; Adresses</h3>
+          <ul>
+            <li>
+              <strong>Cérémonie :</strong><br />
+              145 Chem. de Saint-Jean<br />La Prairie, QC J5R 2J9<br />
+              <a href="https://maps.google.com/?q=145+Chem.+de+Saint-Jean,+La+Prairie,+QC+J5R+2J9" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
+            </li>
+            <li style="margin-top:.8rem;">
+              <strong>Réception :</strong><br />
+              4371 Bd des Grandes-Prairies<br />Saint-Léonard, QC H1R 3H2<br />
+              <a href="https://maps.google.com/?q=4371+Bd+des+Grandes-Prairies,+Saint-Léonard,+QC+H1R+3H2" target="_blank" rel="noopener">Ouvrir dans Google Maps →</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="info-card reveal">
+          <div class="info-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D1B666" stroke-width="1.5">
+              <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+            </svg>
+          </div>
+          <h3>Stationnement</h3>
+          <p>
+            Un stationnement gratuit est disponible sur place à la salle de réception — pas besoin de vous soucier de trouver une place !
+          </p>
+          <p style="margin-top:.6rem;">
+            Un <strong>service de valet facultatif</strong> sera offert en soirée pour votre confort. Comptez environ 5 minutes en voiture entre l'église et la salle.
+          </p>
+        </div>
+
+        <div class="info-card reveal">
+          <div class="info-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D1B666" stroke-width="1.5">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3>Transport &amp; Covoiturage</h3>
+          <p>
+            Nous vous encourageons à prévoir un conducteur désigné ou à vous organiser en covoiturage.
+            Des options de taxi et Uber sont disponibles dans la région.
+          </p>
+          <p style="margin-top:.6rem; font-size:.82rem; color:var(--or); font-style:italic;">
+            Profitez de la soirée sans vous soucier du retour 🥂
+          </p>
+        </div>
+
+        <div class="info-card reveal">
+          <div class="info-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D1B666" stroke-width="1.5">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          <h3>Questions &amp; Contact</h3>
+          <p>
+            Pour toute question concernant la journée, n'hésitez pas à nous contacter directement.
+          </p>
+          <p style="margin-top:.8rem;">
+            <!-- ✏️ REMPLACEZ PAR VOS CONTACTS -->
+            📧 <strong>votrecourriel@exemple.com</strong><br />
+            📱 <strong>(514) 000-0000</strong>
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Cartes interactives -->
+      <div class="map-embed reveal" style="margin-top:3rem;">
+        <div class="map-tabs">
+          <button class="map-tab active" onclick="switchMap('ceremonie', this)">Cérémonie — La Prairie</button>
+          <button class="map-tab" onclick="switchMap('reception', this)">Réception — Saint-Léonard</button>
+        </div>
+        <div id="map-ceremonie">
+          <iframe
+            title="Carte - Cérémonie La Prairie"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.4!2d-73.50!3d45.42!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc9082c68e3c7f5%3A0x9e7a5a1de58c5f21!2s145%20Chem.%20de%20Saint-Jean%2C%20La%20Prairie%2C%20QC%20J5R%202J9!5e0!3m2!1sfr!2sca!4v1700000000000"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div id="map-reception" style="display:none;">
+          <iframe
+            title="Carte - Réception Saint-Léonard"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2794.4!2d-73.59!3d45.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc9193a06b4e9f5%3A0x1e7c3c5c68f3e2f1!2s4371%20Bd%20des%20Grandes-Prairies%2C%20Saint-L%C3%A9onard%2C%20QC%20H1R%203H2!5e0!3m2!1sfr!2sca!4v1700000000001"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       HÉBERGEMENT
+  ════════════════════════════════════════════ -->
+  <section id="hebergement">
+    <div class="section-inner wide">
+      <span class="section-tag reveal">Pour nos invités de l'extérieur</span>
+      <h2 class="section-title reveal">Hébergement</h2>
+      <div class="gold-rule reveal"><div class="gold-diamond"></div></div>
+      <p class="section-sub reveal">
+        Vous venez de loin ? Voici quelques suggestions d'hébergement à proximité de la salle de réception. 
+        N'hésitez pas à réserver tôt — surtout en septembre !
+      </p>
+
+      <div class="hotel-grid">
+        <div class="hotel-card reveal">
+          <span class="hotel-badge">Option 1</span>
+          <h3>🏨 Hôtel [À compléter]</h3>
+          <p>
+            Nom de l'hôtel, adresse approximative, distance jusqu'à la salle.
+            <!-- ✏️ Remplacez par les vraies informations -->
+          </p>
+          <div class="promo-code">Code promo : <strong>ALEXLUC27</strong></div>
+        </div>
+        <div class="hotel-card reveal">
+          <span class="hotel-badge">Option 2</span>
+          <h3>🏨 Hôtel [À compléter]</h3>
+          <p>
+            Nom de l'hôtel, adresse approximative, distance jusqu'à la salle.
+            <!-- ✏️ Remplacez par les vraies informations -->
+          </p>
+          <div class="promo-code">Code promo : <strong>ALEXLUC27</strong></div>
+        </div>
+        <div class="hotel-card reveal">
+          <span class="hotel-badge">Option 3</span>
+          <h3>🏡 Airbnb / Autres</h3>
+          <p>
+            Plusieurs Airbnb de qualité sont disponibles dans le secteur. 
+            Recherchez autour de Saint-Léonard ou Montréal-Est pour les meilleures options.
+          </p>
+          <p style="margin-top:.5rem; font-size:.8rem; color:var(--or);">
+            <a href="https://www.airbnb.ca" target="_blank" rel="noopener" style="color:var(--or);">Chercher sur Airbnb →</a>
+          </p>
+        </div>
+      </div>
+
+      <p class="section-sub reveal" style="margin-top:2rem; font-size:.88rem;">
+        💡 <em>Astuce :</em> Si vous réservez dans l'un des hôtels partenaires avec le code promo, 
+        mentionnez le mariage d'Alexandra &amp; Lucas pour bénéficier du tarif préférentiel.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       DRESS CODE
+  ════════════════════════════════════════════ -->
+  <section id="dresscode">
+    <div class="section-inner">
+      <span class="section-tag">Tenue de soirée</span>
+      <h2 class="section-title">Dress Code</h2>
+      <div class="gold-rule" style="justify-content:center;">
+        <div style="height:1px; width:80px; background:rgba(255,255,255,.2);"></div>
+        <div style="width:8px; height:8px; background:var(--or); transform:rotate(45deg);"></div>
+        <div style="height:1px; width:80px; background:rgba(255,255,255,.2);"></div>
+      </div>
+      <p class="section-sub" style="color:rgba(255,255,255,.7);">
+        Pour s'harmoniser avec l'ambiance de la soirée, nous vous suggérons une tenue élégante 
+        et chic. Voici quelques indications pour vous inspirer.
+      </p>
+
+      <div class="dresscode-grid">
+        <div class="dresscode-item reveal">
+          <div class="dresscode-swatch" style="background:#4A011A;"></div>
+          <h4>Bordeaux profond</h4>
+          <p>Passion &amp; élégance</p>
+        </div>
+        <div class="dresscode-item reveal">
+          <div class="dresscode-swatch" style="background:#003D20;"></div>
+          <h4>Vert émeraude</h4>
+          <p>Nature &amp; raffinement</p>
+        </div>
+        <div class="dresscode-item reveal">
+          <div class="dresscode-swatch" style="background:#D1B666;"></div>
+          <h4>Doré &amp; champagne</h4>
+          <p>Luxe &amp; subtilité</p>
+        </div>
+        <div class="dresscode-item reveal">
+          <div class="dresscode-swatch" style="background:#F7F1E3; border:1px solid rgba(255,255,255,.2);"></div>
+          <h4>Ivoire crème</h4>
+          <p>Douceur &amp; luminosité</p>
+        </div>
+      </div>
+
+      <p class="dresscode-note">
+        Tenue de soirée chic requise. Les couleurs suggérées s'harmonisent avec notre palette, 
+        mais toutes les teintes élégantes sont les bienvenues ! Évitez uniquement le blanc pur 
+        — merci 🤍
+        <br/><br/>
+        <!-- ✏️ Modifiez le dress code selon vos préférences -->
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       CORBEILLE NUPTIALE
+  ════════════════════════════════════════════ -->
+  <section id="corbeille">
+    <div class="section-inner">
+      <span class="section-tag reveal">Un geste du cœur</span>
+      <h2 class="section-title reveal">Corbeille nuptiale</h2>
+      <div class="gold-rule reveal"><div class="gold-diamond"></div></div>
+
+      <div class="corbeille-box reveal">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--or)" stroke-width="1" style="margin:0 auto 1.5rem; opacity:.6;" aria-hidden="true">
+          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+        </svg>
+        <p>
+          Votre présence à nos côtés en ce jour si spécial est, pour nous, le plus précieux des cadeaux. 
+          Aucun présent n'aurait plus de valeur que vos sourires, vos danses et vos souvenirs partagés.
+        </p>
+        <p>
+          Cependant, si vous souhaitez souligner notre nouveau départ avec un geste généreux, 
+          une <strong>corbeille nuptiale</strong> sera disponible sur place lors de la réception. 
+          Vous pouvez également contribuer directement par virement Interac :
+        </p>
+
+        <div class="interac-block">
+          <span class="interac-label">Virement Interac</span>
+          <!-- ✏️ REMPLACEZ PAR VOS VRAIS COORDONNÉES -->
+          <span class="interac-email">votrenom@courriel.com</span>
+          <span class="interac-msg">Message : « Cadeau de mariage — Alexandra &amp; Lucas »</span>
+        </div>
+
+        <p style="margin-top:1.5rem; font-size:.88rem; font-style:italic; max-width:460px; margin-left:auto; margin-right:auto;">
+          Aucune attente de votre part — votre présence et votre amour sont déjà tout ce dont nous avons besoin. 🌹
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       RSVP
+  ════════════════════════════════════════════ -->
+  <section id="rsvp">
+    <div class="section-inner">
+      <span class="section-tag">Votre réponse nous touche</span>
+      <h2 class="section-title">Confirmez votre présence</h2>
+      <div class="gold-rule" style="justify-content:center;">
+        <div style="height:1px; width:80px; background:rgba(255,255,255,.15);"></div>
+        <div style="width:8px; height:8px; background:var(--or); transform:rotate(45deg);"></div>
+        <div style="height:1px; width:80px; background:rgba(255,255,255,.15);"></div>
+      </div>
+      <p class="section-sub">
+        Pour nous permettre d'organiser au mieux cette journée, nous vous remercions de confirmer 
+        votre présence dès que possible.
+      </p>
+      <p class="rsvp-deadline">📅 Date limite de réponse : <strong>1er juillet 2027</strong></p>
+
+      <!-- ✏️ REMPLACEZ CE LIEN PAR VOTRE VRAI FORMULAIRE GOOGLE FORMS -->
+      <a
+        href="https://forms.google.com"
+        target="_blank"
+        rel="noopener"
+        class="rsvp-cta"
+        aria-label="Accéder au formulaire de confirmation de présence"
+      >
+        Confirmer ma présence
+      </a>
+
+      <p class="rsvp-note">
+        Si vous avez des restrictions alimentaires ou des besoins particuliers, 
+        vous pourrez les indiquer dans le formulaire. Merci de votre compréhension !
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════ -->
+  <footer>
+    <p class="footer-names">Alexandra &amp; Lucas</p>
+    <p class="footer-date">18 · 09 · 2027 — La Prairie &amp; Saint-Léonard, Québec</p>
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="var(--or)" style="margin:1rem auto;" aria-hidden="true">
+      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+    </svg>
+    <p class="footer-copy">Fait avec amour · © 2027 Alexandra &amp; Lucas</p>
+  </footer>
+
+  <!-- ════════════════════════════════════════════
+       JAVASCRIPT
+  ════════════════════════════════════════════ -->
+  <script>
+    /* ─── HAMBURGER ─────────────────────────────────────── */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+
+    /* ─── COMPTE À REBOURS ──────────────────────────────── */
+    const weddingDate = new Date('2027-09-18T14:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = weddingDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('cd-jours').textContent = '0';
+        document.getElementById('cd-heures').textContent = '00';
+        document.getElementById('cd-minutes').textContent = '00';
+        document.getElementById('cd-secondes').textContent = '00';
+        return;
+      }
+
+      const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('cd-jours').textContent    = days;
+      document.getElementById('cd-heures').textContent   = String(hours).padStart(2, '0');
+      document.getElementById('cd-minutes').textContent  = String(minutes).padStart(2, '0');
+      document.getElementById('cd-secondes').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    /* ─── SCROLL REVEAL ─────────────────────────────────── */
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, i * 80);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    reveals.forEach(el => observer.observe(el));
+
+    /* ─── ONGLETS CARTE ─────────────────────────────────── */
+    function switchMap(which, btn) {
+      document.querySelectorAll('.map-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('map-ceremonie').style.display = which === 'ceremonie' ? 'block' : 'none';
+      document.getElementById('map-reception').style.display = which === 'reception'  ? 'block' : 'none';
+    }
+
+    /* ─── NAV ACTIVE SECTION ────────────────────────────── */
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section[id], div[id="compteur"]');
+
+    const navObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.forEach(link => {
+              link.style.color = link.getAttribute('href') === '#' + entry.target.id
+                ? 'var(--or)'
+                : '';
+            });
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    sections.forEach(s => navObserver.observe(s));
+  </script>
+
+</body>
+</html>
