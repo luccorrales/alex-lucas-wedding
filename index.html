@@ -34,12 +34,12 @@
 
     /* ─── RESET & BASE ───────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 17px; }
     body {
       background: var(--ivoire);
       color: var(--texte);
       font-family: var(--serif);
-      line-height: 1.7;
+      line-height: 1.8;
       overflow-x: hidden;
     }
     img { max-width: 100%; display: block; }
@@ -270,13 +270,13 @@
       margin-bottom: .5rem;
     }
     .section-sub {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 300;
       color: var(--texte-doux);
       text-align: center;
       max-width: 540px;
       margin: 0 auto 2.5rem;
-      line-height: 1.75;
+      line-height: 1.85;
     }
     .gold-rule {
       display: flex;
@@ -450,10 +450,10 @@
       margin-bottom: .7rem;
     }
     .story-text p {
-      font-size: .95rem;
+      font-size: 1rem;
       font-weight: 300;
       color: var(--texte-doux);
-      line-height: 1.85;
+      line-height: 1.9;
     }
 
     /* ── Photo triptych ── */
@@ -558,12 +558,12 @@
     }
     .timeline-event {
       font-family: var(--serif);
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 500;
       color: var(--bordeaux);
     }
     .timeline-desc {
-      font-size: .9rem;
+      font-size: .95rem;
       font-weight: 300;
       color: var(--texte-doux);
       margin-top: .2rem;
@@ -574,7 +574,7 @@
       background: rgba(198,129,24,.08);
       border-left: 3px solid var(--or-light);
       border-radius: 0 var(--radius) var(--radius) 0;
-      font-size: .88rem;
+      font-size: .93rem;
       color: var(--texte-doux);
       font-family: var(--serif);
       font-style: italic;
@@ -619,10 +619,10 @@
       margin-bottom: .6rem;
     }
     .info-card p, .info-card ul, .info-card li {
-      font-size: .9rem;
+      font-size: .95rem;
       font-weight: 300;
       color: var(--texte-doux);
-      line-height: 1.75;
+      line-height: 1.8;
     }
     .info-card ul { list-style: none; }
     .info-card li::before {
@@ -711,19 +711,19 @@
     }
     .dresscode-item h4 {
       font-family: var(--serif);
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: #fff;
       margin-bottom: .3rem;
     }
     .dresscode-item p {
-      font-size: .8rem;
+      font-size: .85rem;
       color: rgba(255,255,255,.6);
       font-family: var(--sans);
       font-weight: 300;
     }
     .dresscode-note {
       margin-top: 2rem;
-      font-size: .88rem;
+      font-size: .93rem;
       color: rgba(255,255,255,.6);
       font-style: italic;
       font-family: var(--serif);
@@ -743,10 +743,10 @@
       box-shadow: var(--shadow);
     }
     .corbeille-box p {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 300;
       color: var(--texte-doux);
-      line-height: 1.9;
+      line-height: 1.95;
       max-width: 560px;
       margin: 0 auto 1.8rem;
     }
@@ -769,12 +769,12 @@
       font-weight: 500;
     }
     .interac-email {
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--bordeaux);
       font-weight: 500;
     }
     .interac-msg {
-      font-size: .8rem;
+      font-size: .88rem;
       color: var(--texte-doux);
     }
 
@@ -785,7 +785,7 @@
     #rsvp .section-sub { color: rgba(255,255,255,.75); }
     .rsvp-deadline {
       font-family: var(--sans);
-      font-size: .8rem;
+      font-size: .85rem;
       letter-spacing: .1em;
       color: rgba(255,255,255,.55);
       margin-bottom: 2.5rem;
@@ -812,7 +812,7 @@
     }
     .rsvp-note {
       margin-top: 1.8rem;
-      font-size: .82rem;
+      font-size: .88rem;
       color: rgba(255,255,255,.5);
       font-family: var(--serif);
       font-style: italic;
@@ -872,6 +872,71 @@
       .hamburger { display: none; }
       .mobile-menu { display: none !important; }
     }
+    /* ─── LIGHTBOX ───────────────────────────────────────── */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(10, 4, 2, 0.88);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s ease;
+    }
+    .lightbox-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lightbox-img-wrap {
+      position: relative;
+      max-width: min(90vw, 820px);
+      max-height: 90svh;
+      transform: scale(.93);
+      transition: transform .35s cubic-bezier(.22,1,.36,1);
+    }
+    .lightbox-overlay.open .lightbox-img-wrap {
+      transform: scale(1);
+    }
+    .lightbox-img {
+      display: block;
+      max-width: 100%;
+      max-height: 88svh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: calc(var(--radius) * 2);
+      box-shadow: 0 24px 80px rgba(0,0,0,.6);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      width: 38px; height: 38px;
+      background: var(--bordeaux);
+      color: #fff;
+      border: 2px solid rgba(255,255,255,.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,.4);
+    }
+    .lightbox-close:hover {
+      background: var(--or);
+      transform: scale(1.1);
+    }
+    /* make photos feel clickable */
+    .story-photo-wrap { cursor: zoom-in; }
+
   </style>
 </head>
 <body>
@@ -1567,7 +1632,62 @@
       { threshold: 0.4 }
     );
     sections.forEach(s => navObserver.observe(s));
+
+    /* ─── LIGHTBOX ──────────────────────────────────────── */
+    const lightbox      = document.getElementById('lightbox');
+    const lightboxImg   = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxWrap  = document.getElementById('lightboxWrap');
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      // clear src after fade-out so old image doesn't flash on reopen
+      setTimeout(() => { lightboxImg.src = ''; }, 350);
+    }
+
+    // Delegate click on all .story-photo images
+    document.addEventListener('click', (e) => {
+      const photo = e.target.closest('.story-photo-wrap img.story-photo');
+      if (photo) {
+        e.stopPropagation();
+        openLightbox(photo.src, photo.alt);
+      }
+    });
+
+    // Close on X button
+    lightboxClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeLightbox();
+    });
+
+    // Close on backdrop click (but not on the image itself)
+    lightbox.addEventListener('click', (e) => {
+      if (!lightboxWrap.contains(e.target)) closeLightbox();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
+
   </script>
+  <!-- ════════════════════════════════════════════
+       LIGHTBOX
+  ════════════════════════════════════════════ -->
+  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Image agrandie">
+    <div class="lightbox-img-wrap" id="lightboxWrap">
+      <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+      <button class="lightbox-close" id="lightboxClose" aria-label="Fermer">✕</button>
+    </div>
+  </div>
 
 </body>
 </html>
