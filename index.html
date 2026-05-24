@@ -1584,10 +1584,15 @@
       const panel = document.getElementById('panel-' + panelId);
       if (!panel) return;
       panel.classList.add('active');
-      // rAF trick: let display:block settle before triggering transition
+      
+      // let display:block settle before triggering transition
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           panel.classList.add('visible');
+          // Re-initialize triggers for the newly visible images
+          if (typeof initLightboxTriggers === 'function') {
+            initLightboxTriggers();
+          }
         });
       });
     }
@@ -1683,12 +1688,19 @@
   <!-- ════════════════════════════════════════════
        LIGHTBOX
   ════════════════════════════════════════════ -->
+<footer>
+    </footer>
+
   <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Image agrandie">
     <div class="lightbox-img-wrap" id="lightboxWrap">
       <img class="lightbox-img" id="lightboxImg" src="" alt="" />
       <button class="lightbox-close" id="lightboxClose" aria-label="Fermer">✕</button>
     </div>
   </div>
+
+  <script>
+    // All your JavaScript goes here, including the lightbox functions...
+  </script>
 
 </body>
 </html>
