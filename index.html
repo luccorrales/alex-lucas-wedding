@@ -214,6 +214,7 @@
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.6); /* Écrit le texte en blanc semi-transparent */
       font-weight: 400;
+      margin-bottom: 5rem;
     }
     .hero-scroll {
       position: absolute;
@@ -224,7 +225,25 @@
       flex-direction: column;
       align-items: center;
       gap: .4rem;
+      pointer-events: none;
     }
+
+    @media (max-height: 740px) {
+      #accueil {
+        padding-bottom: 5rem; /* Gives breathing room at the bottom of the section */
+      }
+      .hero-limite {
+        margin-bottom: 1rem; 
+      }
+      .hero-scroll {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 3rem;
+      }
+    }
+    
     .hero-scroll span {
       font-family: var(--sans);
       font-size: .65rem;
